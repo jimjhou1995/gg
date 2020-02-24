@@ -6113,3 +6113,107 @@ callbacks.shift()();
 </span></div>
 </body>
 </html>
+
+1. 
+def time_convert(tzone,time):
+    from datetime import tzinfo, timedelta, datetime
+    from pytz import timezone 
+    from dateutil.parser import parse
+    time = parse(time) 
+    time = time.replace(tzinfo=timezone('UTC'))
+    fmt = "%d/%m/%Y %H:%M"
+    if tzone == "EST":
+        print (time.astimezone(timezone('US/Eastern')).strftime(fmt))
+    elif tzone == "PST":
+        print (time.astimezone(timezone('US/Pacific')).strftime(fmt))
+    elif tzone == "MST":
+        print (time.astimezone(timezone('US/Mountain')).strftime(fmt))
+    elif tzone == "CST":
+        print (time.astimezone(timezone('US/Central')).strftime(fmt))
+    elif tzone == "CN":
+        print (time.astimezone(timezone('Asia/Shanghai')).strftime(fmt))
+    elif tzone == "BST":
+        print (time.astimezone(timezone('Europe/London')).strftime(fmt))
+    else:
+        print("error")
+        
+time_convert("CN",'23/02/2020 10:00')        
+
+2.
+def guess (P1,P2) :
+    import random 
+    x=random.randint(1,10)
+    y=random.randint(1,10)
+    while x!=y :
+        if x > y:
+            print(P1+" "+"go lower")
+            x=random.randint(1,10)
+        elif y > x:
+            print(P1+" "+"go higher")
+            x=random.randint(1,10)
+        if x == y:
+            print("It's over"+" "+P2)
+guess("James","Mark")
+
+3. 
+def calculate_age(dtob):
+    from datetime import date
+    from dateutil.parser import parse
+    dtob = parse(dtob)
+    today = date.today()
+    A = today.year - dtob.year - ((today.month, today.day) < (dtob.month, dtob.day))
+    print("you are" + " " + str(A) +" "+"years old")
+    
+calculate_age('08/08/1995')
+
+
+4. 
+def round_reverse(x):
+    import math
+    x1= x-math.floor(x)
+    if x1>=0.5:
+     print(math.floor(x))
+    elif x1 < 0.5:
+     print(math.floor(x)+1)
+
+round_reverse(3.2)
+round_reverse(3.9)
+
+5. 
+def salutation(forename, surname, age, martial, gender):
+    if gender == "female" and martial == "married":
+       print("Dear Mrs"+" "+forename+" "+surname)
+    elif gender == "female" and martial == "single" and age <= 18:
+        print("Dear Miss"+" "+forename+" "+surname)
+    elif gender == "female" and martial == "single": 
+        print("Dear Ms"+" "+forename+" "+surname)
+    elif gender == "male" and age > 18: 
+         print("Dear Mr"+" "+forename+" "+surname)
+    elif gender == "male" and age <= 18:
+          print("Dear Master"+" "+forename+" "+surname)
+    else: 
+           print("error")
+
+salutation('James','Pennington',68,'married','male') 
+salutation('Mark','Jennifer',19,'single','female')
+
+8. 
+def timechange(time):
+    from datetime import datetime
+    x=datetime.strptime(time, "%H:%M")
+    print(x.strftime("%I:%M %p"))
+timechange("23:00")
+
+10. 
+def alphabet(A):
+    x = {'a':1,'b':2,'c':3,'d':4,'e':5,'f':6,'g':7,'h':8,'i':9,'j':10,'k':11,'l':12 ,'m':13,'n':14,'o':15,'p':16,'q':17,'r':18,'s':19,'t':20,'u':21,'v':22,'w':23,'x':24,'y':25,'z':26}
+    for key in A:
+     print(str(x.get(key)))
+
+alphabet('abc')
+
+
+
+
+
+
